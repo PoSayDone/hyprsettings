@@ -1,0 +1,18 @@
+using Gtk 4.0;
+
+template $SidebarBox : Box {
+  orientation: vertical;
+
+  ListBox section_list {
+    styles ["navigation-sidebar"]
+    $SidebarItem {
+        icon-name: "lala";
+        label: "Appearance";
+    }
+    $SidebarItem {
+        icon-name: "lala";
+        label: "Network";
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SidebarItem : Adw.Bin {
+    // margin-bottom: 12;
+    // margin-end: 6;
+    // margin-start: 6;
+    // margin-top: 6;
+    child: Box {
+        spacing: 10;
+        GestureClick click {}
+        Image icon {}
+        Label label {}
+    };
+}

@@ -1,0 +1,27 @@
+#main-container {
+  padding: 0 16px;
+}
+
+#current-wallpaper {
+  min-height: 300px;
+  border-radius: 400px;
+  transition: all 0.3s ease-in-out;
+}
+
+#wallpapers_flowbox > * {
+  min-height: 100px;
+}
+
+#wallpapers_flowbox > *,
+.available-wallpaper {
+  border-radius: 20px;
+}
+
+.navigation-sidebar {
+  background: none;
+}
+
+.navigation-sidebar > row {
+  padding: 8px 16px;
+  border-radius: 30px;
+}

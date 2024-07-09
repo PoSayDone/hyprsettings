@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=hyprsettings
+Exec=hyprsettings
+Icon=io.github.posaydone.hyprsettings
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

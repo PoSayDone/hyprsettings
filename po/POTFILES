@@ -1,0 +1,6 @@
+data/io.github.posaydone.hyprsettings.desktop.in
+data/io.github.posaydone.hyprsettings.metainfo.xml.in
+data/io.github.posaydone.hyprsettings.gschema.xml
+src/main.py
+src/window.py
+src/window.ui
