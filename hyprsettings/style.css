@@ -1,27 +1,47 @@
+.pill {
+	padding: 14px 0;
+}
+
 #main-container {
-  padding: 0 16px;
+	padding: 0 16px;
 }
 
 #current-wallpaper {
-  min-height: 300px;
-  border-radius: 400px;
-  transition: all 0.3s ease-in-out;
+	min-height: 300px;
+	border-radius: 20px;
+	transition: all 0.3s ease-in-out;
 }
 
 #wallpapers_flowbox > * {
-  min-height: 100px;
+	min-height: 100px;
 }
 
 #wallpapers_flowbox > *,
 .available-wallpaper {
-  border-radius: 20px;
+	border-radius: 20px;
 }
 
 .navigation-sidebar {
-  background: none;
+	background: none;
 }
 
 .navigation-sidebar > row {
-  padding: 8px 16px;
-  border-radius: 30px;
+	padding: 8px 16px;
+	border-radius: 30px;
+}
+
+.navigation-sidebar > row.activatable:selected {
+	font-weight: 500;
+	background: @primary;
+	color: @on_primary;
+}
+
+#theme_box > button.toggle {
+	padding: 20px;
+	border-radius: 20px;
+}
+
+#theme_box > button.toggle:checked {
+	background: @primary;
+	color: @on_primary;
 }

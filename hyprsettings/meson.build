@@ -4,9 +4,11 @@ gnome = import('gnome')
 
 blueprints = custom_target('blueprints',
   input: files(
-    'wallpaper_item.blp',
-    'sidebar_item.blp',
-    'sidebar_box.blp',
+    'pages/appearance.blp',
+    'pages/network.blp',
+    'widgets/wallpaper_item.blp',
+    'widgets/sidebar_item.blp',
+    'widgets/sidebar_box.blp',
     'window.blp'
   ),
   output: '.',
@@ -38,13 +40,20 @@ configure_file(
   install_mode: 'r-xr-xr-x'
 )
 
+install_subdir('pages', install_dir: moduledir)
+install_subdir('widgets', install_dir: moduledir)
+
 hyprsettings_sources = [
   '__init__.py',
   'main.py',
   'window.py',
-  'wallpaper_item.py',
-  'sidebar_item.py',
-  'sidebar_box.py',
+  'pages/__init__.py',
+  'pages/appearance.py',
+  'pages/network.py',
+  'widgets/__init__.py',
+  'widgets/wallpaper_item.py',
+  'widgets/sidebar_item.py',
+  'widgets/sidebar_box.py',
   'utils.py',
 ]
 

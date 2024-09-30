@@ -1,7 +1,7 @@
 from gi.repository import Gtk, GObject
 
 
-@Gtk.Template(resource_path="/io/github/posaydone/hyprsettings/sidebar_box.ui")
+@Gtk.Template(resource_path="/io/github/posaydone/hyprsettings/widgets/sidebar_box.ui")
 class SidebarBox(Gtk.Box):
     __gtype_name__ = "SidebarBox"
 

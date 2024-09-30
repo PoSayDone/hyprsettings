@@ -1,0 +1,73 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $AppearancePage : ScrolledWindow {
+  child: Adw.Clamp {
+    margin-bottom: 16;
+    child: Gtk.Box {
+      spacing: 32;
+      orientation: vertical;
+      Adw.PreferencesGroup {
+        title: "Accent colors";
+
+
+        Box {
+          orientation: vertical;
+          spacing: 16;
+
+          Box theme_box {
+            spacing: 8;
+            name: "theme_box";
+            hexpand: true;
+            ToggleButton dark_mode_toggle {
+                hexpand: true;
+                child: Label {label: "Dark";};
+            }
+            ToggleButton light_mode_toggle{
+                group: dark_mode_toggle;
+                hexpand: true;
+                child: Label {label: "Light";};
+            }
+          }
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: "Wallpaper";
+
+        Box {
+          orientation: vertical;
+          spacing: 16;
+
+          Picture current_wallpaper_picture {
+            name: "current-wallpaper";
+            content-fit: cover;
+          }
+
+          Button add_wallpaper_button {
+            label: _("Add a new wallpaper");
+            styles [
+              "pill"
+            ]
+          }
+
+          FlowBox wallpapers_flowbox {
+              homogeneous: true;
+              name: "wallpapers_flowbox";
+              max-children-per-line: 5;
+              min-children-per-line: 3;
+              activate-on-single-click: false;
+          }
+        }
+      }
+    };
+  };
+}
+
+FileFilter file_filter_image {
+  mime-types [
+    "image/png",
+    "image/jpeg",
+    "image/webp",
+  ]
+}

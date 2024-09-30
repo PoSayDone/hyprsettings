@@ -1,21 +1,24 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $HyprsettingsWindow : Adw.ApplicationWindow {
+template $HyprsettingsWindow : Adw.ApplicationWindow  {
+  name: "hyprsettings_window";
   width-request: 360;
   height-request: 200;
   default-width: 640;
   default-height: 700;
 
   Adw.Breakpoint {
-    condition ("max-width: 600sp")
+    condition ("max-width: 700sp")
 
     setters {
+      pages_stack.transition-type: none;
       split_view.collapsed: true;
     }
   }
 
   content: Adw.NavigationSplitView split_view {
+    min-sidebar-width: 200;
     sidebar: Adw.NavigationPage {
       title: _("Sidebar");
       tag: "sidebar";
@@ -26,11 +29,14 @@ template $HyprsettingsWindow : Adw.ApplicationWindow {
           show-title: false;
         }
 
-        content: $SidebarBox sidebar_box {};
+        // content: $SidebarBox sidebar_box {};
+        content: StackSidebar sidebar_box {
+          stack: pages_stack;
+        };
       };
     };
 
-    content: Adw.NavigationPage {
+    content: Adw.NavigationPage navigation_page {
       title: _("Settings");
       tag: "content";
 
@@ -43,90 +49,20 @@ template $HyprsettingsWindow : Adw.ApplicationWindow {
         content: Stack pages_stack {
           name: 'main-container';
           transition-type: crossfade;
-          StackPage appearance_page {
-            title: "Appearance";
-            name: 'appearance';
-
-            child: ScrolledWindow {
-              child: Adw.Clamp {
-                child: Gtk.Box {
-                  spacing: 32;
-                  orientation: vertical;
-                  Adw.PreferencesGroup {
-                    title: "Theme";
-                    description: "Change theme between dark and light";
-
-                    Adw.ComboRow theme_comborow{
-                      title: "Style";
-                      model: StringList {
-                        strings [
-                          "Dark",
-                          "Light"
-                        ]
-                      };
-                    }
-                  }
-
-                  Adw.PreferencesGroup {
-                    title: "Wallpaper";
-                    description: "Set any wallpaper you like";
-
-                    Box {
-                      orientation: vertical;
-                      spacing: 16;
-
-                      Picture current_wallpaper_picture {
-                        name: "current-wallpaper";
-                        content-fit: cover;
-                      }
-
-                      Button add_wallpaper_button {
-                        action-name: "win.addwallpaper";
-                        label: _("Add a new wallpaper");
-                        styles [
-                          "pill"
-                        ]
-                      }
-
-                      FlowBox wallpapers_flowbox {
-                          name: "wallpapers_flowbox";
-                          max-children-per-line: 5;
-                          min-children-per-line: 3;
-                          activate-on-single-click: false;
-                      }
-
-                    }
-                  }
-                };
-              };
-            };
-          }
-          StackPage network_page {
-            title: "Network";
-            name: 'network';
-
-            child: Adw.Clamp {
-              child: Gtk.Box {
-                spacing: 32;
-                orientation: vertical;
-
-                Adw.PreferencesGroup {
-                  title: "Wi-Fi";
-                  description: "Various Wi-Fi settings";
-                }
-              };
-            };
-          }
+          vhomogeneous: false;
+            StackPage appearance_page {
+              title: "Appearance";
+              name: 'appearance';
+              child: $AppearancePage {};
+            }
+            StackPage network_page {
+              title: "Network";
+              name: 'network';
+              child: $NetworkPage  {};
+            }
         };
       };
     };
   };
 }
 
-FileFilter file_filter_image {
-  mime-types [
-    "image/png",
-    "image/jpeg",
-    "image/webp",
-  ]
-}

@@ -1,8 +1,8 @@
 from gi.repository import Adw, Gtk, GObject
-from .utils import GProperty
+from hyprsettings.utils import GProperty
 
 
-@Gtk.Template(resource_path="/io/github/posaydone/hyprsettings/sidebar_item.ui")
+@Gtk.Template(resource_path="/io/github/posaydone/hyprsettings/widgets/sidebar_item.ui")
 class SidebarItem(Adw.Bin):
     __gtype_name__ = "SidebarItem"
 

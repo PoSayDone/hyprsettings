@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/github/posaydone/hyprsettings">
-      <file preprocess="xml-stripblanks">wallpaper_item.ui</file>
-      <file preprocess="xml-stripblanks">sidebar_item.ui</file>
-      <file preprocess="xml-stripblanks">sidebar_box.ui</file>
+      <file preprocess="xml-stripblanks">widgets/wallpaper_item.ui</file>
+      <file preprocess="xml-stripblanks">widgets/sidebar_item.ui</file>
+      <file preprocess="xml-stripblanks">widgets/sidebar_box.ui</file>
+      <file preprocess="xml-stripblanks">pages/appearance.ui</file>
+      <file preprocess="xml-stripblanks">pages/network.ui</file>
       <file preprocess="xml-stripblanks">window.ui</file>
-      <file preprocess="xml-stripblanks">style.css</file>
+      <file>style.css</file>
   </gresource>
 </gresources>

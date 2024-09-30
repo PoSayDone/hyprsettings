@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="hyprsettings">
-	<schema id="io.github.posaydone.hyprsettings" path="/io/github/posaydone/hyprsettings/">
+    <schema id="io.github.posaydone.hyprsettings" path="/io/github/posaydone/hyprsettings/">
+        <key name="current-mode" type="s">
+            <default>"dark"</default>
+        </key>
 	</schema>
 </schemalist>

@@ -1,55 +1,45 @@
 {
+  system,
   blueprint-compiler,
   desktop-file-utils,
-  gobject-introspection,
   lib,
   libadwaita,
+  libportal-gtk4,
   meson,
   ninja,
   python3Packages,
-  stdenv,
   wrapGAppsHook4,
-  nix-update-script,
+  astal,
 }:
-stdenv.mkDerivation (finalAttrs: {
+python3Packages.buildPythonApplication {
   pname = "hyprsettings";
   version = "0.0.1";
+  format = "other";
 
-  src = ../.;
-
-  pythonPath = with python3Packages; [
-    pygobject3
-  ];
+  src = lib.cleanSource ../.;
 
   buildInputs = [
+    astal.packages.${system}.network
     libadwaita
-    (python3Packages.python.withPackages (_: finalAttrs.pythonPath))
+    libportal-gtk4
   ];
 
   nativeBuildInputs = [
     blueprint-compiler
     desktop-file-utils
-    gobject-introspection
     meson
     ninja
-    python3Packages.wrapPython
     wrapGAppsHook4
   ];
 
-  dontWrapGApps = true;
-
-  postFixup = ''
-    makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
-    wrapPythonPrograms "$out/bin" "$out" "$pythonPath"
-  '';
-
-  passthru = {
-    updateScript = nix-update-script {};
-  };
+  propagatedBuildInputs = with python3Packages; [
+    packaging
+    pygobject3
+  ];
 
   meta = with lib; {
     description = "Settings for hyprland";
     mainProgram = "hyprsettings";
-    license = licenses.gpl3Plus;
+    license = licenses.gpl3;
   };
-})
+}
