@@ -2,3 +2,4 @@ subprojects/blueprint-compiler
 flatpak-build-dir
 .vscode
 .direnv
+.idea

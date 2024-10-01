@@ -18,6 +18,6 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     packages.${system}.default = pkgs.callPackage (import ./nix) {inherit system astal;};
-    devShells.${system}.default = import ./nix/devshell.nix {inherit pkgs;};
+    devShells.${system}.default = import ./nix/devshell.nix {inherit pkgs astal;};
   };
 }

@@ -15,7 +15,7 @@ from hyprsettings.widgets.wallpaper_item import WallpaperItem
 class AppearancePage(Gtk.ScrolledWindow):
     __gtype_name__ = "AppearancePage"
 
-    wallpapers_folder = f"{Path.home()}/.cache/hyprsettings/wallpapers"
+    wallpapers_folder = f"{Path.home()}/.local/share/hyprsettings/wallpapers"
     current_wallpaper_picture: Gtk.Picture = Gtk.Template.Child()
     wallpapers_flowbox: Gtk.FlowBox = Gtk.Template.Child()
     add_wallpaper_button: Gtk.Button = Gtk.Template.Child()
@@ -54,13 +54,15 @@ class AppearancePage(Gtk.ScrolledWindow):
 
     def on_mode_active(self, mode):
         self.set_property("current-mode", mode)
-        self.on_wallpaper_set(f"{Path.home()}/.cache/current_wallpaper", False)
+        self.on_wallpaper_set(
+            f"{Path.home()}/.local/share/hyprsettings/current_wallpaper", False
+        )
 
     def restore_wallpapers(self):
 
         try:
             self.current_wallpaper_picture.set_filename(
-                f"{Path.home()}/.cache/current_wallpaper"
+                f"{Path.home()}/.local/share/hyprsettings/current_wallpaper"
             )
         except:
             print("no current wp")
@@ -132,7 +134,12 @@ class AppearancePage(Gtk.ScrolledWindow):
         )
         if symlink:
             subprocess.Popen(
-                ["ln", "-sf", filepath, f"{Path.home()}/.cache/current_wallpaper"]
+                [
+                    "ln",
+                    "-sf",
+                    filepath,
+                    f"{Path.home()}/.local/share/hyprsettings/current_wallpaper",
+                ]
             )
         time.sleep(1)
         self.reload_gtk_theme()
